@@ -1,25 +1,29 @@
-class Stock{
-    private  String symbol;
+class Stock {
+    private String symbol;
     private String companyName;
     private Double price;
 
-    Stock(String symbol, String companyname,Double price){
-        this.symbol=symbol;
-        this.companyName=companyname;
-        this.price= price;
+    Stock(String symbol, String companyName, Double price) {
+        this.symbol = symbol;
+        this.companyName = companyName;
+        this.price = price;
     }
-    void SetValue(Double money){
-        if(money>0){
-            this.price=money;
+
+    void setPrice(Double money) {
+        if (money > 0) {
+            this.price = money;
         }
     }
-    Double GetValue(){
+
+    Double getPrice() {
         return price;
     }
-    String GetSymbol(){
+
+    String getSymbol() {
         return symbol;
     }
-    String GetCompanyName(){
+
+    String getCompanyName() {
         return companyName;
     }
 }

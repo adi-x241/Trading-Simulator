@@ -1,17 +1,33 @@
-public class Main{
-    public static void main(String[] args){
-        Stock Apple = new Stock("Apple","Apple inc.",1000.12);
-        System.out.println("Stock Symbol: " + Apple.GetSymbol());
-        System.out.println("Company Name: " + Apple.GetCompanyName());
-        System.out.println("Current Price: " + Apple.GetValue());
-
-        User user1 = new User(50.0,"Aditya");
-        System.out.println("User Name: " + user1.getName());
-        System.out.println("User Balance: " + user1.getBalance());
-        user1.depositAmount(20.22);
-        System.out.println("User Balance after deposit: " + user1.getBalance());
-        user1.withdrawAmount(30.0);
-        System.out.println("User Balance after withdrawal: " + user1.getBalance());
+public class Main {
+    public static void main(String[] args) {
+       
+        Market newMarket = new Market();
         
+       
+        Stock stock1 = new Stock("APPLE", "APPLE INC", 333.2);
+        Stock stock2 = new Stock("GOOGLE", "GOOGLE.COM", 345.0);
+        Stock stock3 = new Stock("BIRYANI", "PATAKI", 20.0);
+        
+        newMarket.addStock(stock1);
+        newMarket.addStock(stock2);
+        newMarket.addStock(stock3);
+        
+        
+        User user1 = new User(2000000.1, "ADITYA");
+        
+        
+        double currentPrice = newMarket.getStock("APPLE").getPrice();
+        System.out.println("Current price of APPLE: $" + currentPrice);
+        
+       
+        int value = user1.buyStock("APPLE", 20, currentPrice);
+        
+        
+        if (value == -1) {
+            System.out.println("Transaction Failed: Insufficient balance.");
+        } else {
+            System.out.println("Success! Aditya now owns " + value + " shares of APPLE.");
+            System.out.println("Updated Portfolio: " + user1.getPortfolio());
+        }
     }
 }
