@@ -11,7 +11,23 @@ class User {
         this.portfolio = new HashMap<>();
     }
 
-    public int buyStock(String companyName, Integer quantity, Double price){
+    public int buyStock(String companyName, Integer quantity, double price){
+        double totalCost = quantity *price;
+        if(totalCost>balance){
+            return -1;
+        }
+        balance-=totalCost;
+        if(portfolio.containsKey(companyName)){
+            portfolio.put(companyName, portfolio.get(companyName) + quantity);
+            return portfolio.get(companyName);
+        } 
+        else {
+            portfolio.put(companyName, quantity);
+            return portfolio.get(companyName);
+        }
+       
+     }
+     public int buyCrypto(String companyName, Integer quantity, double price){
         double totalCost = quantity *price;
         if(totalCost>balance){
             return -1;

@@ -1,29 +1,20 @@
-class Stock {
-    private String symbol;
-    private String companyName;
-    private Double price;
+class Stock extends Asset {
+    private double dividendYeild;
 
-    Stock(String symbol, String companyName, Double price) {
-        this.symbol = symbol;
-        this.companyName = companyName;
-        this.price = price;
+    Stock(String symbol, String companyName, double price,double dividendYeild) {
+        super(symbol, companyName, price);
+        this.dividendYeild=dividendYeild;
     }
 
-    void setPrice(Double money) {
-        if (money > 0) {
-            this.price = money;
-        }
+    void changeStockPrice(double money) {
+        double currentPrice = getPrice();
+
+        currentPrice =currentPrice+money;
+        setPrice(currentPrice);
     }
 
-    Double getPrice() {
-        return price;
+    public double getDividendYeild(){
+        return dividendYeild;
     }
 
-    String getSymbol() {
-        return symbol;
-    }
-
-    String getCompanyName() {
-        return companyName;
-    }
 }
