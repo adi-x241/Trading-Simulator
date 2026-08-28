@@ -6,12 +6,6 @@ class Crypto extends Asset {
         this.networkName=networkName;
     }
 
-    void changeCryptoPrice(double money) {
-        double currentPrice = getPrice();
-
-        currentPrice =currentPrice+money;
-        setPrice(currentPrice);
-    }
 
     public String  getNetworkName(){
         return networkName;

@@ -11,7 +11,7 @@ class User {
         this.portfolio = new HashMap<>();
     }
 
-    public int buyStock(String companyName, Integer quantity, double price){
+    public int buyAsset(String companyName, Integer quantity, double price){
         double totalCost = quantity *price;
         if(totalCost>balance){
             return -1;
@@ -27,22 +27,7 @@ class User {
         }
        
      }
-     public int buyCrypto(String companyName, Integer quantity, double price){
-        double totalCost = quantity *price;
-        if(totalCost>balance){
-            return -1;
-        }
-        balance-=totalCost;
-        if(portfolio.containsKey(companyName)){
-            portfolio.put(companyName, portfolio.get(companyName) + quantity);
-            return portfolio.get(companyName);
-        } 
-        else {
-            portfolio.put(companyName, quantity);
-            return portfolio.get(companyName);
-        }
-       
-     }
+    
     boolean withdrawAmount(Double Amount){
         if(Amount>0 && balance>=Amount){
             balance-=Amount;

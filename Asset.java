@@ -1,4 +1,4 @@
-public class Asset {
+public abstract class Asset {
     private String symbol;
     private String companyName;
     private double price;
@@ -13,6 +13,11 @@ public class Asset {
         if (money > 0) {
             this.price = money;
         }
+    }
+    public  void changeAssetPrice(double money) {
+        double currentPrice = getPrice();
+        currentPrice =currentPrice+money;
+        setPrice(currentPrice);
     }
 
     public double getPrice(){
