@@ -1,4 +1,4 @@
-public abstract class Asset {
+abstract class Asset {
     private String symbol;
     private String companyName;
     private double price;

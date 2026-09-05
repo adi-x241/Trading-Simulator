@@ -1,4 +1,4 @@
-class Crypto extends Asset {
+class Crypto extends Asset implements Tradable {
     private String networkName;
 
     Crypto(String symbol, String companyName, double price,String networkName) {
@@ -9,6 +9,10 @@ class Crypto extends Asset {
 
     public String  getNetworkName(){
         return networkName;
+    }
+    @Override
+    public void canTrade(){
+        System.out.println("crypto is available to trade");
     }
 
 }
