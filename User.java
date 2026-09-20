@@ -52,4 +52,6 @@ class User {
     public HashMap<String, Integer> getPortfolio() {
       return portfolio;
     }
+
+   
 }

@@ -30,4 +30,17 @@ abstract class Asset {
         return symbol;
     }
 
+    @Override 
+    public boolean equals(Object obj){
+
+        if(this == obj) return true;
+        if(!(obj instanceof Asset)) return false;
+        Asset other = (Asset) obj;
+        return  this.getSymbol().equals(other.getSymbol());
+    }
+    @Override 
+    public int hashCode(){
+        return getSymbol().hashCode();
+    }
+
 }
