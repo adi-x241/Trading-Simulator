@@ -9,15 +9,17 @@ abstract class Asset {
         this.price=price;
     }
     
-    public void setPrice(double money) {
+    public boolean setPrice(double money) {
         if (money > 0) {
             this.price = money;
+            return true;
         }
+        return false;
     }
-    public  void changeAssetPrice(double money) {
+    public  boolean changeAssetPrice(double money) {
         double currentPrice = getPrice();
         currentPrice =currentPrice+money;
-        setPrice(currentPrice);
+        return setPrice(currentPrice);
     }
 
     public double getPrice(){
