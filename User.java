@@ -1,33 +1,17 @@
-import java.util.HashMap;
+
 class User {
     private String name;
+    private Double userId;
     private Double balance;
-
-    private HashMap<String,Integer> portfolio;
-
-    User(Double money,String name){
+    private  Portfolio portfolio;
+    User(Double money,String name,Double userId){
         this.name= name;
         this.balance=money;
-        this.portfolio = new HashMap<>();
+        this.userId=userId;
+        this.portfolio=new Portfolio();
+        
     }
-
-    public int buyAsset(String companySymbol, Integer quantity, double price){
-        double totalCost = quantity *price;
-        if(totalCost>balance){
-            return -1;
-        }
-        balance-=totalCost;
-        if(portfolio.containsKey(companySymbol)){
-            portfolio.put(companySymbol, portfolio.get(companySymbol) + quantity);
-            return portfolio.get(companySymbol);
-        } 
-        else {
-            portfolio.put(companySymbol, quantity);
-            return portfolio.get(companySymbol);
-        }
-       
-     }
-    
+   
     boolean withdrawAmount(Double Amount){
         if(Amount>0 && balance>=Amount){
             balance-=Amount;
@@ -48,9 +32,11 @@ class User {
     String getName(){
         return name;
     }
-
-    public HashMap<String, Integer> getPortfolio() {
-      return portfolio;
+    Double getuserId(){
+        return  userId;
+    } 
+    Portfolio getPortfolio(){
+        return  portfolio;
     }
 
    

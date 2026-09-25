@@ -11,4 +11,23 @@ class Order {
         this.status = OrderStatus.PENDING;
         this.type=OrderType.valueOf(s);
     }
+    public int getQuantity(){
+        return quantity;
+    }
+    public Asset getAsset(){
+        return asset;
+    }
+    public double getPrice(){
+        return  price;
+    }
+    public OrderType getOrderType(){
+        return type;
+    }
+    public OrderStatus getOrderStatus(){
+        return  status;
+    }
+    public void updateOrderStatus(OrderStatus status){
+       this.status=status;
+        
+    }
 }
