@@ -1,4 +1,5 @@
 
+import java.util.Collection;
 import java.util.HashMap;
 class Market {
     private HashMap<String,Asset> availableAssets;
@@ -16,6 +17,7 @@ class Market {
     public HashMap<String, Asset> getMarket(){
         return availableAssets;
     }
+    
     
 
 }

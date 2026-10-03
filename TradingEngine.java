@@ -1,7 +1,7 @@
 import java.util.*;
-class TradingEngin {
+class TradingEngine {
     List<Transaction> transactionHistory;
-    TradingEngin(){
+    TradingEngine(){
         transactionHistory = new ArrayList<>();
     }
     public  void placeOrder(Order order,User user){
@@ -31,21 +31,21 @@ class TradingEngin {
         }
         
     }
-        public OrderStatus processOrder(User user, Order order) throws InsufficientBalanceException, AssetNotFoundException,IllegalArgumentException,InsufficientAssetException, InvalidQuantityException{
-        executeOrder(user, order);
-            order.updateOrderStatus(OrderStatus.EXECUTED);
-            Transaction transaction =new Transaction(user, order);
-            transactionHistory.add(transaction);
+    public OrderStatus processOrder(User user, Order order) throws InsufficientBalanceException, AssetNotFoundException,IllegalArgumentException,InsufficientAssetException, InvalidQuantityException{
             
-            return order.getOrderStatus();
-        
-        
+            if(order.getOrderStatus()==OrderStatus.PENDING){
+                executeOrder(user, order);
+              order.updateOrderStatus(OrderStatus.EXECUTED);
+              Transaction transaction =new Transaction(user, order);
+              transactionHistory.add(transaction);
+           }
+           return order.getOrderStatus(); 
     }
-    public OrderStatus cancelOrder(User user, Order order) {
+        public OrderStatus cancelOrder(User user, Order order) {
            if(order.getOrderStatus()==OrderStatus.PENDING){
                order.updateOrderStatus(OrderStatus.CANCELLED);
            }
-           return order.getOrderStatus();
+        return order.getOrderStatus();
     }
     
     

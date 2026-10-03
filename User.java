@@ -1,11 +1,11 @@
 import java.util.*; 
 class User {
     private String name;
-    private Double userId;
+    private int userId;
     private Double balance;
     private  Portfolio portfolio;
     private HashMap<Integer,Order> orderHistory;
-    User(Double money,String name,Double userId){
+    User(Double money,String name,int userId){
         this.name= name;
         this.balance=money;
         this.userId=userId;
@@ -34,7 +34,7 @@ class User {
     String getName(){
         return name;
     }
-    Double getuserId(){
+    int getUserId(){
         return  userId;
     } 
     Portfolio getPortfolio(){

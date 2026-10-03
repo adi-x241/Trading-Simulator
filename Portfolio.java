@@ -49,7 +49,7 @@ class Portfolio {
         }
         return  totalValue;
     }
-    public double netProfit_Loss(){
+    public double netProfitLoss(){
         double totalprofit_loss=0;
         for(Map.Entry<Asset,Position> entry:portfolio.entrySet()){
             totalprofit_loss+=(entry.getKey().getPrice()-entry.getValue().getAveragePrice())*entry.getValue().getQuantity();
