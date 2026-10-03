@@ -1,4 +1,5 @@
 class Order {
+    private int orderId;
     private int quantity;
     private Asset asset;
     private double price;
@@ -29,5 +30,8 @@ class Order {
     public void updateOrderStatus(OrderStatus status){
        this.status=status;
         
+    }
+    public int getOrderId(){
+        return orderId;
     }
 }

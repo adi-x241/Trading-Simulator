@@ -4,9 +4,12 @@ class TradingEngin {
     TradingEngin(){
         transactionHistory = new ArrayList<>();
     }
-    private boolean executeOrder(User user,Order order){
+    public  void placeOrder(Order order,User user){
+        user.getOrderHistory().put(order.getOrderId(), order);
+    }
+    private boolean executeOrder(User user,Order order) throws InsufficientBalanceException, AssetNotFoundException,IllegalArgumentException,InsufficientAssetException, InvalidQuantityException{
         if(!(order.getAsset() instanceof Tradable)){
-            return false;
+            throw new IllegalArgumentException("Asset Not Tradeable");
         }
         else if(order.getOrderType()==OrderType.BUY){
             if(user.withdrawAmount(order.getPrice()*order.getQuantity())){
@@ -14,27 +17,35 @@ class TradingEngin {
                 user.getPortfolio().updatePosition(position);
                 return true;
             }
-            return false;
+            throw new InsufficientBalanceException("Insfficient Balance");
         }
-        else if(order.getOrderType()==OrderType.SELL){
-            if(user.getPortfolio().sellPosition(order.getAsset(),order.getQuantity() ,order.getPrice())){
+        else if(order.getOrderType()==OrderType.SELL) {
+            user.getPortfolio().sellPosition(order.getAsset(),order.getQuantity() ,order.getPrice());
                 user.depositAmount(order.getPrice()*order.getQuantity());
                 return true;
-            }
-            return false;
+            
+           
         }
-        return false;
+        else {
+            throw new IllegalArgumentException("Enter valid Argument");
+        }
         
     }
-    public OrderStatus processOrder(User user, Order order){
-        if(executeOrder(user, order)){
+    public OrderStatus processOrder(User user, Order order) throws InsufficientBalanceException, AssetNotFoundException,IllegalArgumentException,InsufficientAssetException, InvalidQuantityException{
+        executeOrder(user, order);
             order.updateOrderStatus(OrderStatus.EXECUTED);
-                Transaction transaction =new Transaction(user, order);
-                transactionHistory.add(transaction);
+            Transaction transaction =new Transaction(user, order);
+            transactionHistory.add(transaction);
+            
             return order.getOrderStatus();
-        }
-        order.updateOrderStatus(OrderStatus.CANCELLED);
-        return order.getOrderStatus();
+        
+        
+    }
+    public OrderStatus cancelOrder(User user, Order order) {
+           if(order.getOrderStatus()==OrderStatus.PENDING){
+               order.updateOrderStatus(OrderStatus.CANCELLED);
+           }
+           return order.getOrderStatus();
     }
     
     

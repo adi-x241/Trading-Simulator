@@ -12,7 +12,7 @@ class Portfolio {
     private boolean containsAsset(Asset asset){
         return  portfolio.containsKey(asset);
     }
-    public boolean updatePosition(Position position){
+    public boolean updatePosition(Position position) throws InvalidQuantityException {
         if(!portfolio.containsKey(position.getAsset())){
             portfolio.put(position.getAsset(),position);
             return true;
@@ -22,15 +22,13 @@ class Portfolio {
         return true;
     }
 
-    public boolean sellPosition(Asset asset, int quantity, double price){
-        if(!portfolio.containsKey(asset)) return  false;
+    public boolean sellPosition(Asset asset, int quantity, double price) throws AssetNotFoundException,InsufficientAssetException,IllegalArgumentException,InvalidQuantityException{
+        if (!portfolio.containsKey(asset)) {
+            throw new AssetNotFoundException("Asset Not Present in  Portfolio");
+        }
         Position existingPosition = portfolio.get(asset);
 
-        boolean removed = existingPosition.removeQuantity(quantity, price);
-
-        if (!removed) {
-           return false;
-        }
+        existingPosition.removeQuantity(quantity, price);
 
         if(existingPosition.getQuantity() == 0){
             portfolio.remove(existingPosition.getAsset());
@@ -38,7 +36,7 @@ class Portfolio {
         }
         return true;
     }
-    public Position getPosition(Asset asset){
+    public Position getPosition(Asset asset) throws AssetNotFoundException{
         return portfolio.get(asset);
     }
     public Collection<Position> getpositions(){
