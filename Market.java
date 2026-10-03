@@ -1,7 +1,7 @@
 
 import java.util.HashMap;
 class Market {
-    HashMap<String,Asset> availableAssets;
+    private HashMap<String,Asset> availableAssets;
     Market(){
         availableAssets = new HashMap<>();
     }
@@ -13,5 +13,9 @@ class Market {
     public Asset getAsset(String symbol){
          return availableAssets.get(symbol);
     }
+    public HashMap<String, Asset> getMarket(){
+        return availableAssets;
+    }
+    
 
 }

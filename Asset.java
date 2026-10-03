@@ -3,20 +3,22 @@ abstract class Asset {
     private String companyName;
     private double price;
 
-    Asset(String symbol,String name, double price ){
+    Asset(String symbol,String name, double price ) throws InvalidPriceException{
         this.symbol=symbol;
         this.companyName=name;
+        if(price<=0) throw new InvalidPriceException("Enter Correct Price");
         this.price=price;
     }
     
-    public boolean setPrice(double money) {
+    public boolean setPrice(double money) throws InvalidPriceException {
         if (money > 0) {
             this.price = money;
             return true;
         }
-        return false;
+        throw new InvalidPriceException("Enter valid Price");
+        
     }
-    public  boolean changeAssetPrice(double money) {
+    public  boolean changeAssetPrice(double money)throws InvalidPriceException{
         double currentPrice = getPrice();
         currentPrice =currentPrice+money;
         return setPrice(currentPrice);

@@ -31,7 +31,7 @@ class TradingEngin {
         }
         
     }
-    public OrderStatus processOrder(User user, Order order) throws InsufficientBalanceException, AssetNotFoundException,IllegalArgumentException,InsufficientAssetException, InvalidQuantityException{
+        public OrderStatus processOrder(User user, Order order) throws InsufficientBalanceException, AssetNotFoundException,IllegalArgumentException,InsufficientAssetException, InvalidQuantityException{
         executeOrder(user, order);
             order.updateOrderStatus(OrderStatus.EXECUTED);
             Transaction transaction =new Transaction(user, order);

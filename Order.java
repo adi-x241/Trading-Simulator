@@ -5,12 +5,14 @@ class Order {
     private double price;
     private OrderType type;
     private OrderStatus status;
-    Order(Asset asset,String s,int quantity){
+    Order(Asset asset,String s,int quantity,int orderId) throws InvalidQuantityException{
+        if(quantity<=0) throw new InvalidQuantityException("Enter The Correct Quantity");
         this.quantity=quantity;
         this.asset=asset;
         this.price=asset.getPrice();
         this.status = OrderStatus.PENDING;
         this.type=OrderType.valueOf(s);
+        this.orderId=orderId;
     }
     public int getQuantity(){
         return quantity;

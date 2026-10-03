@@ -1,7 +1,7 @@
 class Crypto extends Asset implements Tradable {
     private String networkName;
 
-    Crypto(String symbol, String companyName, double price,String networkName) {
+    Crypto(String symbol, String companyName, double price,String networkName) throws InvalidPriceException {
         super(symbol, companyName, price);
         this.networkName=networkName;
     }

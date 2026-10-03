@@ -2,7 +2,7 @@
 class Stock extends Asset implements Tradable {
     private double dividendYield;
 
-    Stock(String symbol, String companyName, double price,double dividendYield) {
+    Stock(String symbol, String companyName, double price,double dividendYield) throws InvalidPriceException {
         super(symbol, companyName, price);
         this.dividendYield=dividendYield;
     }
