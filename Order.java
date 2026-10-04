@@ -5,6 +5,7 @@ class Order {
     private double price;
     private OrderType type;
     private OrderStatus status;
+    
     Order(Asset asset,String s,int quantity,int orderId) throws InvalidQuantityException{
         if(quantity<=0) throw new InvalidQuantityException("Enter The Correct Quantity");
         this.quantity=quantity;

@@ -5,6 +5,7 @@ class User {
     private Double balance;
     private  Portfolio portfolio;
     private HashMap<Integer,Order> orderHistory;
+    private  int nextOrderId=1;
     User(Double money,String name,int userId){
         this.name= name;
         this.balance=money;
@@ -42,6 +43,11 @@ class User {
     }
     HashMap<Integer, Order> getOrderHistory(){
         return orderHistory;
+    }
+    public  int getNextOrderId(){
+        int current=nextOrderId;
+        nextOrderId++;
+        return current;
     }
 
    
