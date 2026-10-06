@@ -3,3 +3,4 @@ public class AssetNotFoundException extends Exception {
         super(message);
     }
 }
+hsjs
