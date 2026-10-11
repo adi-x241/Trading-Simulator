@@ -1,5 +1,6 @@
 import java.util.*;
-class TradingEngine {
+import  java.io.Serializable;
+class TradingEngine implements Serializable{
     List<Transaction> transactionHistory;
     TradingEngine(){
         transactionHistory = new ArrayList<>();

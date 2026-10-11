@@ -1,7 +1,7 @@
-
+import  java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
-class Market {
+class Market implements  Serializable{
     private HashMap<String,Asset> availableAssets;
     Market(){
         availableAssets = new HashMap<>();
@@ -17,7 +17,11 @@ class Market {
     public HashMap<String, Asset> getMarket(){
         return availableAssets;
     }
-    
-    
+    public Asset getAsset(Asset asset){
+        if(availableAssets.containsKey(asset.getSymbol())){
+            return availableAssets.get(asset.getSymbol());
+        }
+        return  null;
+    }
 
 }

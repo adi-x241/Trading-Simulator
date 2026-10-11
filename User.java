@@ -1,5 +1,6 @@
 import java.util.*; 
-class User {
+import java.io.Serializable;
+class User implements  Serializable{
     private String name;
     private int userId;
     private Double balance;

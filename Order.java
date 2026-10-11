@@ -1,4 +1,5 @@
-class Order {
+import java.io.Serializable;
+class Order implements Serializable {
     private int orderId;
     private int quantity;
     private Asset asset;

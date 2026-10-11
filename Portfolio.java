@@ -1,7 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Collection;
-class Portfolio {
+import java.io.Serializable;
+class Portfolio  implements Serializable{
     
     private HashMap<Asset,Position> portfolio;
 

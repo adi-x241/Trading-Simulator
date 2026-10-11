@@ -1,4 +1,5 @@
-abstract class Asset {
+import java.io.Serializable;
+abstract class Asset implements  Serializable{
     private String symbol;
     private String companyName;
     private double price;

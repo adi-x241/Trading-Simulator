@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
-class Transaction {
+import java.io.Serializable;
+class Transaction implements  Serializable{
     private  User user;
     private  Order order;
     private  LocalDateTime timeStamp ;

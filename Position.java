@@ -1,4 +1,5 @@
-class Position {
+import java.io.Serializable;
+class Position implements Serializable {
     private Asset asset;
     private int quantity;
     private double averagePrice;
