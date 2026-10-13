@@ -10,8 +10,11 @@ class Portfolio  implements Serializable{
         this.portfolio=new HashMap<>();
     }
     
-    private boolean containsAsset(Asset asset){
-        return  portfolio.containsKey(asset);
+    public void containsAsset(Asset asset) throws AssetNotFoundException{
+          if(portfolio.containsKey(asset)){
+             return ;
+          }
+          throw new AssetNotFoundException("Asset is Not present in Portfolio");
     }
     public boolean updatePosition(Position position) throws InvalidQuantityException {
         if(!portfolio.containsKey(position.getAsset())){

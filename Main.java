@@ -82,13 +82,17 @@ class Main {
 
                             case 2:
                                 System.out.println("User Portfolio:");
+
                                 for (Position position : user1.getPortfolio().getpositions()) {
                                     System.out.println("=".repeat(40));
                                     System.out.println("Asset: " + position.getAsset().getName());
                                     System.out.println("Quantity: " + position.getQuantity());
                                     System.out.println("Average Price: " + position.getAveragePrice());
+                                    System.out.println(
+                                            "Asset Net Value :" + position.getQuantity() * position.getAveragePrice());
                                     System.out.println("=".repeat(40));
                                 }
+                                System.out.println("Net Value of Portfolio :" + user1.getPortfolio().netValue());
                                 break;
 
                             case 3:
@@ -114,9 +118,21 @@ class Main {
                                 success = true;
 
                                 do {
-                                    String symbol;
-                                    System.out.print("Enter The Symbol Of Company: ");
-                                    symbol = sc.next();
+                                    String symbol = null;
+                                    boolean invalid = false;
+                                    do {
+                                        try {
+                                            System.out.print("Enter The Symbol Of Company: ");
+                                            symbol = sc.next();
+                                            market.getAsset(symbol);
+                                            invalid = true;
+
+                                        } catch (Exception e) {
+                                            System.out.println(e.getMessage());
+                                            invalid = false;
+
+                                        }
+                                    } while (!invalid);
 
                                     System.out.print("How many assets do you want to purchase: ");
                                     int quantity = sc.nextInt();
@@ -180,14 +196,26 @@ class Main {
                                     for (Position position : user1.getPortfolio().getpositions()) {
                                         Asset asset = position.getAsset();
                                         System.out.println(asset.getSymbol() + " -> "
-                                                + asset.getName() + " -> " + asset.getPrice());
+                                                + asset.getName() + " -> " + asset.getPrice()+ " -> " +"Quantity :"+position.getQuantity());
                                     }
 
                                     success = true;
 
                                     do {
-                                        System.out.print("Enter The Symbol Of Company: ");
-                                        String symbol = sc.next();
+                                        String symbol = null;
+                                        boolean invalid = false;
+                                        do {
+                                            try {
+                                                System.out.print("Enter The Symbol Of Company: ");
+                                                symbol = sc.next();
+                                                user1.getPortfolio().containsAsset(market.getAsset(symbol));
+                                                invalid = true;
+
+                                            } catch (Exception e) {
+                                                System.out.println(e.getMessage());
+                                                invalid = false;
+                                            }
+                                        } while (!invalid);
 
                                         System.out.print("How many assets do you want to sell: ");
                                         int quantity = sc.nextInt();

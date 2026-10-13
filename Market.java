@@ -11,8 +11,11 @@ class Market implements  Serializable{
             availableAssets.put(asset.getSymbol(),asset);
         }
     }
-    public Asset getAsset(String symbol){
-         return availableAssets.get(symbol);
+    public Asset getAsset(String symbol) throws AssetNotFoundException{
+           if(availableAssets.containsKey(symbol)){
+             return availableAssets.get(symbol);
+           }
+           throw new AssetNotFoundException("Asset is Not Present in Market");
     }
     public HashMap<String, Asset> getMarket(){
         return availableAssets;
