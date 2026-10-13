@@ -49,23 +49,19 @@ class Main {
             choice = sc.nextInt();
 
             switch (choice) {
-
-                // ================= USER MENU =================
                 case 1: {
                     int userChoice;
-
-                    System.out.println("=".repeat(40));
-                    System.out.println("USER MENU");
-                    System.out.println("=".repeat(40));
-                    System.out.println("1. Add Balance / View Balance");
-                    System.out.println("2. View Portfolio");
-                    System.out.println("3. View Market");
-                    System.out.println("4. Buy Asset");
-                    System.out.println("5. Sell Asset");
-                    System.out.println("6. View Order History");
-                    System.out.println("7. Back");
-
                     do {
+                        System.out.println("=".repeat(40));
+                        System.out.println("USER MENU");
+                        System.out.println("=".repeat(40));
+                        System.out.println("1. Add Balance / View Balance");
+                        System.out.println("2. View Portfolio");
+                        System.out.println("3. View Market");
+                        System.out.println("4. Buy Asset");
+                        System.out.println("5. Sell Asset");
+                        System.out.println("6. View Order History");
+                        System.out.println("7. Back");
                         System.out.print("Enter The Option: ");
                         userChoice = sc.nextInt();
 
@@ -273,7 +269,6 @@ class Main {
                     break;
                 }
 
-                // ================= ADMIN MENU =================
                 case 2: {
                     int adminChoice;
 

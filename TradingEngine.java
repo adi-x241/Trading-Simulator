@@ -42,7 +42,7 @@ class TradingEngine implements Serializable{
            }
            return order.getOrderStatus(); 
     }
-        public OrderStatus cancelOrder(User user, Order order) {
+    public OrderStatus cancelOrder(User user, Order order) {
            if(order.getOrderStatus()==OrderStatus.PENDING){
                order.updateOrderStatus(OrderStatus.CANCELLED);
            }
